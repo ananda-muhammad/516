@@ -1,0 +1,16 @@
+<script> 
+let guess = 50, high = 100, low = 1, range = (low, high), user = prompt("Is your number " + (Math.floor(range/2)) + "?");
+
+while(!user.match(/yes/i)) {
+  if(user == "<") {
+    high = guess
+    guess = (Math.floor((high + low)/2)) //restate variables high and guess; Math.floor returns an integer
+    user = prompt("Is your number " + guess + "?");
+  } else if(user == ">") {
+    low = guess
+    guess = (Math.floor((high + low)/2)) //restate variables low and guess
+    user = prompt("Is your number " + guess + "?");
+  }
+}
+alert("I won!"); //alert must be outside of the while loop because the while condition is != "yes"
+</script>
