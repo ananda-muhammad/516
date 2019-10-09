@@ -1,0 +1,23 @@
+<html>
+<script>
+"use strict";
+
+let shift = Number(prompt("Enter shift"));
+let plaintext = prompt("Enter text");
+let cipher = '';
+let i = 0;
+
+for (i = 0; i < plaintext.length; i++) {
+  let ASCIIcode = plaintext.charCodeAt(i);
+  
+  if (ASCIIcode >= 65 && ASCIIcode <= 90) {
+    cipher += String.fromCharCode((ASCIIcode - 65 + shift) % 26 + 65);
+  } else if (ASCIIcode >= 97 && ASCIIcode <= 122) {
+    cipher += String.fromCharCode((ASCIIcode - 97 + shift) % 26 + 97);
+  } else {
+    cipher += plaintext.charAt(i);
+  }
+}
+alert(cipher);
+</script>
+</html>
