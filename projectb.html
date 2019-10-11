@@ -2,22 +2,41 @@
 <script>
 "use strict";
 
-let shift = Number(prompt("Enter shift"));
-let plaintext = prompt("Enter text");
-let cipher = '';
-let i = 0;
+let shift = Number(prompt("Enter shift")); //saves shift
+let plaintext = prompt("Enter text"); //saves text that needs to be encrypted
+let cipher = ''; //this is the output variable, empty
+let i = 0; //starting point
 
 for (i = 0; i < plaintext.length; i++) {
-  let ASCIIcode = plaintext.charCodeAt(i);
-  
-  if (ASCIIcode >= 65 && ASCIIcode <= 90) {
-    cipher += String.fromCharCode((ASCIIcode - 65 + shift) % 26 + 65);
-  } else if (ASCIIcode >= 97 && ASCIIcode <= 122) {
-    cipher += String.fromCharCode((ASCIIcode - 97 + shift) % 26 + 97);
-  } else {
-    cipher += plaintext.charAt(i);
+  let ASCIIcode = plaintext.charCodeAt(i); //turns plaintext to ASCII code
+
+  if (shift > 0) { //handles right-positive shift
+    if (ASCIIcode >= 65 && ASCIIcode <= 90) {
+      cipher += String.fromCharCode((ASCIIcode - 65) + shift % 26 + 65); //turns ASCII code to encrypted text and add it to the cipher string
+    } else if (ASCIIcode >= 97 && ASCIIcode <= 122) {
+      cipher += String.fromCharCode((ASCIIcode - 97) + shift % 26 + 97);
+    } else {
+      cipher += plaintext.charAt(i); //skip non-alphabetic characters (don't change it) just add it to the cipher string
+    }
+  } else { //handles left-negative shift
+    if (ASCIIcode >= 65 && ASCIIcode <= 90) { 
+      if ((ASCIIcode - 65) + shift % 26 == 0) {
+        cipher += String.fromCharCode(65);
+      } else {
+        cipher += String.fromCharCode((ASCIIcode - 65) + shift % 26 + 91);
+      }
+    } else if (ASCIIcode >= 97 && ASCIIcode <= 122) {
+      if ((ASCIIcode - 97) + shift % 26 == 0) {
+        cipher += String.fromCharCode(97);
+      } else {
+        cipher += String.fromCharCode((ASCIIcode - 97) + shift % 26 + 123);
+      }
+    } else {
+      cipher += plaintext.charAt(i);
+    }
   }
 }
+
 alert(cipher);
 </script>
 </html>
