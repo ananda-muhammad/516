@@ -9,7 +9,7 @@ let i = 0; //starting point
 
 for (i = 0; i < plainText.length; i++) {
   let ASCIIcode = plainText.charCodeAt(i); //turns plaintext to ASCII code 
-  let modShift = (shift % 26) //based on Jayme's suggestion for wrapping
+  let modShift = (shift % 26); //based on Jayme's suggestion for wrapping
   if (shift > 0) { //handles right-positive shift
     if (ASCIIcode >= 65 && ASCIIcode <= 90) {
       if ((ASCIIcode + modShift) > 90) {
