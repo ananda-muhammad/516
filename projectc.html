@@ -1,0 +1,31 @@
+<script>
+"use strict"; 
+
+const gramTest = {
+  "in": ["He's swimming __ the river.", "There is a spider __ the bath.", "Please put those apples __ the bowl.", "I read the story __ the newspaper.", "I'll meet you __ the cinema."],
+  "at": ["Where's Julie? She's __ school.", "Lucy was standing __ the bus stop.", "I stayed __ home all weekend.", "Jennifer is __ work.", "Turn left __ the traffic lights."],
+  "on": ["You have something __ your face.", "Julie will be __ the plane now.", "He has a house __ the river.", "There are a lot of magnets __ the fridge.", "She was listening to classical music __ the radio."],
+  "by": ["Shall we go on foot or __ car?", "This parcel arrived __ post.", "Send this letter __ air mail.", "These flowers have been sent __ Jane.", "The key was lost __ my niece."],
+  "with": ["You may write __ a pencil or a pen.", "I'm going to the cinema __ my friend.", "I always go to school __ Charles.", "I got the stain out __ this brush.", "Mary cleaned the house __ the new vacuum cleaner."]
+};
+
+let learnerModel = {"in": 0, "at": 0, "on": 0, "by": 0, "with": 0};
+let minPrep = "in";
+
+while(true) {
+  for(let k in learnerModel) {
+    if(learnerModel[minPrep] > learnerModel[k]) {
+      minPrep = k;
+    }
+  }
+  let showItem = gramTest[minPrep][Math.floor(Math.random() * 5)]; //Source: https://www.kirupa.com/html5/picking_random_item_from_array.htm
+  let userAnswer = prompt(showItem);
+  if (userAnswer == minPrep) {
+    alert("Correct!");
+    learnerModel[minPrep]++;
+  } else {
+    alert(showItem.replace(/__/, minPrep)); //Source: https://www.w3schools.com/jsref/jsref_replace.asp
+    learnerModel[minPrep]--;
+  }
+}
+</script>
