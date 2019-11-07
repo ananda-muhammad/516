@@ -1,0 +1,15 @@
+<script>
+"use strict";
+
+let originalMessage = prompt("Enter your message.");
+
+let haigyPaigy = originalMessage.replace(/(([aeiouy]+)([^aeiouy])+)(e)\b/gi, "$1_"); //least inclusive, handles vowel "e" at final position which is silent
+
+haigyPaigy = haigyPaigy.replace(/([aeiouy]+)/gi, "###$1"); //most inclusive, add placeholder before one or more vowels (besides "e" at final position), $1 is the group of characters in parentheses
+
+haigyPaigy = haigyPaigy.replace (/_\b/g, "e"); //replace "_" with just "e", basically taking out the placeholder, putting the silent "e" back in
+
+haigyPaigy = haigyPaigy.replace(/###/g, "aig"); //just for placeholder, replace it with "aig", this keeps the vowels in place
+
+alert(haigyPaigy);
+</script>
