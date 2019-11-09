@@ -1,0 +1,10 @@
+Final Project Proposal
+
+My proposed project is related to my current research on creating a corpus of graduate students email communication in the U.S. academic setting. I have collected approximately 900 emails from 30 different graduate students from three universities. The emails that they submit to me are authentic emails that they have sent throughout their academic life. As such, they were considered highly private materials, and due to IRB requirements, I was required to collect the emails through a data collection instrument that I collected in Excel. Basically, participants copied and pasted their emails into the Excel file with deidentified information. In my effort to 'clean' the files, in other words copying and pasting each line of email from the Excel file to a .txt file with a corpus header, I was so far only able to clean some 400 emails. It is a laborious process. Therefore, my final project is to write a script that will allow me to:
+
+1). Split the emails collected in the Excel files into seperate email files.
+2). Convert the Excel files into .txt files.
+3). Format the .txt files so that the emails are preceded by a corpus header containing each email's metapragmatic data (e.g., imposition, recipient, power relationship) and wrapped in a 'text' boundary (starts with <email> and ends with </email>).
+4). Further deidentify the data by finding instances of possibly identifying information (e.g., names) and replacing them with codes (e.g., [First Name]).
+
+The third step has been done manually by me, in which I type the metadata provided by participants in the Excel file into a header template, which has a high probability of me typing the information wrong. This automatic process will allow me to ensure that the formatting of each corpus file to be exactly the same across all files. In addition, in the future I intend to add more information to the corpus. If I do this manually, it will mean I have to add the information to each corpus file manually. However, with a script, I can easily redo the above processes.
