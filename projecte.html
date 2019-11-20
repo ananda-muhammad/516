@@ -1,0 +1,45 @@
+<p>Input:<br><textarea id="input" rows="10" cols="80"></textarea>
+<p><button onclick="process()">Process</button>
+<p>Output:<br><textarea id="output" rows="10" cols="80"></textarea>
+
+<script>
+
+// this function will be invoked when the button is clicked
+function process() {
+
+  // get input text, put it in the variable "userInput"
+  let userInput = document.getElementById("input").value;
+
+  // do some processing on variable "userInput"
+  userInput = userInput.replace(/[!?.,:;'"()]/g, ""); // removes punctuation
+  userInput = userInput.replace(/\s{2,}/g, " "); // removes extra white-space
+  userInput = userInput.toUpperCase(); // casts all words to upper case
+
+  let myTokens = userInput.split(" ");
+  let myTypes = [...new Set(myTokens)]; // Source: https://wsvincent.com/javascript-remove-duplicates-array/
+  let ratio = myTokens.length / myTypes.length; // Calculates and displays the type/token ratio.
+  let counter = 0;
+  let typeFrequency = {};
+
+  for (i = 0; i < myTypes.length; i++) {
+    for (m = 0; m < myTokens.length; m++) {
+      if (myTypes[i] == myTokens[m]) {
+        counter++;
+      }
+    }
+    typeFrequency[myTypes[i]] = counter;
+    counter = 0;
+  }
+
+  let sortedFrequency = Object.keys(typeFrequency).sort(function(a,b) {
+    return typeFrequency[b] - typeFrequency[a]
+  });
+  let corpusOutput = "";
+  for (let k = 0; k < sortedFrequency.length; k++) {
+    corpusOutput += sortedFrequency[k] + " " + typeFrequency[sortedFrequency[k]] + "\n";
+  }
+  // populate the output text box with the value of the variable "corpusOutput" and "ratio"
+  document.getElementById("output").value = "Types and frequencies:" + "\n" + corpusOutput + "Type/Token ratio:" + " " + ratio;
+} 
+  
+</script>
