@@ -32,13 +32,13 @@ function process() {
   }
 
   let sortedFrequency = Object.keys(typeFrequency).sort(function(a,b) {
-    return typeFrequency[b] - typeFrequency[a]
+    return typeFrequency[b] - typeFrequency[a] // Source: https://stackoverflow.com/questions/1069666/sorting-javascript-object-by-property-value
   });
   let corpusOutput = "";
   for (let k = 0; k < sortedFrequency.length; k++) {
     corpusOutput += sortedFrequency[k] + " " + typeFrequency[sortedFrequency[k]] + "\n";
   }
-  // populate the output text box with the value of the variable "corpusOutput" and "ratio"
+  // populate the output text box with the value of the variables "corpusOutput" and "ratio"
   document.getElementById("output").value = "Types and frequencies:" + "\n" + corpusOutput + "Type/Token ratio:" + " " + ratio;
 } 
   
