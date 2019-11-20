@@ -11,7 +11,7 @@ function process() {
   let userInput = document.getElementById("input").value;
 
   // do some processing on variable "userInput"
-  userInput = userInput.replace(/[!?.,:;'"><()]/g, ""); // removes punctuation
+  userInput = userInput.replace(/[!?.,:;'"><()]/g, " "); // removes punctuation
   userInput = userInput.replace(/\s{2,}/g, " "); // removes extra white-space
   userInput = userInput.toUpperCase(); // casts all words to upper case
 
